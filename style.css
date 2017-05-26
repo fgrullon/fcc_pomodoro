@@ -1,20 +1,24 @@
-#timer {
-  text-align: center;
-  font-size: 60px;
+
+.timer {
+  height: 50px;
   width: 200px;
-  height: 70px;
-  border: 1px solid black;
-  margin: auto;
-}
-
-
-.pomodoroContainer{
-	width: 200px;
-	height: 25px;
-	margin: auto;
-	padding: 20px;
-
+  float: left;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
 
 }
 
+.relax, .work {
+  height: 50px;
+  width: 100px;
+  float: left;
+  font-weight: bold;
+  font-size: 30px;
+}
 
+.relax a, .relax div, .work a, .work div{
+  float: left;
+  padding: 5px;
+  margin-top: 10px;
+}
