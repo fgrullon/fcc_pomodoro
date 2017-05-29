@@ -2,15 +2,23 @@ $(function(){
 
 var running  = false; 
 var work = $(".wminutes");
-var min = 25;
-var relax = 5;
-work.text(min);
+var relax = $(".rminutes");
 
+var work_period = 25;
+var relax_period = 5;
+work.text(work_period);
+relax.text(relax_period);
+
+//Start Timer
 $("#timer").click(function(){
 
 	if(running === false){
 		running = true;
-		start("w", (min));
+    document.getElementById("foot").style.color = "#98FB98";
+    document.getElementById("foot").innerHTML = "Work Time";
+ 
+    start("w", (work_period));
+		
 	}else{
 		clearInterval(timer);
 		running = false;
@@ -20,36 +28,41 @@ $("#timer").click(function(){
 
 
 
+//Add and Subtract button for work time
 
 $(".wadd").click(function(){
 	if(running === false){
-		  work.text(min +=1);
+		  work.text(work_period +=1);
 	}
 
 });
 
 $(".wsubt").click(function(){
 if(running === false){
-  if(min > 0){
-  	work.text(min -=1);
+  if(work_period > 1){
+  	work.text(work_period -=1);
   }
 }
 });
 
+
+//Add and Subtract button for relax time
+
 $(".radd").click(function(){
 	if(running === false){
-		  minutes.text(min +=1);
+		  relax.text(relax_period +=1);
 	}
 
 });
 
 $(".rsubt").click(function(){
 if(running === false){
-  if(min > 0){
-  	minutes.text(min -=1);
+  if(relax_period > 1){
+  	relax.text(relax_period -=1);
   }
 }
 });
+
 
 function start(op, millis) {
 
@@ -65,11 +78,15 @@ function start(op, millis) {
     		millis = millis - 1000;
     	}else{
     		if(op === "w"){
-				clearInterval(timer);    			
-				start("b", (relax));
+				clearInterval(timer);
+        document.getElementById("foot").style.color = "#FF0000";
+        document.getElementById("foot").innerHTML = "Relax";    			
+				start("b", (relax_period));
     		}else if (op === "b"){
     			clearInterval(timer); 
-    			start("w", (min));
+          document.getElementById("foot").style.color = "#98FB98";
+          document.getElementById("foot").innerHTML = "Work Time";
+    			start("w", (work_period));
     		}
     	}
 			
@@ -83,10 +100,3 @@ function start(op, millis) {
 
     
 });
-
-
-
-
-
-
-      
